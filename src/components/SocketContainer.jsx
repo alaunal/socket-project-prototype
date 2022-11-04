@@ -19,20 +19,21 @@ const SocketContainer = () => {
   useEffect(() => {
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: {
-        id: user.participant.id,
+        userId: user.participant.id,
         username: user.participant.username,
-        project: user.project.name,
+        email: user.participant.email,
+        projectId: user.project.id,
+        projectName: user.project.name,
       },
     });
 
     if (!isEmpty(user)) {
-      // socketRef.current.emit("joinProject", user);
 
       (async () => {
         await socketRef.current.on("projectUsers", ({ project, userActive, participant }) => {
           console.log("projectUsers", project, participant, userActive);
 
-          let isConnected = filter(participant, (obj) => parseInt(obj.id) === parseInt(user.participant.id));
+          let isConnected = filter(participant, (obj) => parseInt(obj.userId) === parseInt(user.participant.id));
 
           if (!isEmpty(isConnected)) {
             setParticipant(participant);
