@@ -7,7 +7,8 @@ import { useAuth } from "../hooks/useAuth";
 import { useSocket } from "../hooks/useSocket";
 
 // const SOCKET_SERVER_URL = "https://socket-prototype.herokuapp.com";
-const SOCKET_SERVER_URL = "http://localhost:3001";
+// const SOCKET_SERVER_URL = "http://localhost:3001";
+const SOCKET_SERVER_URL = "http://rabbit-hole-integration-007.prime-studio-socket.ps-http.golabs.io";
 
 const SocketContainer = () => {
   const outlet = useOutlet();
@@ -31,7 +32,7 @@ const SocketContainer = () => {
 
       (async () => {
         await socketRef.current.on("projectUsers", ({ project, userActive, participant }) => {
-          console.log("projectUsers", project, participant, userActive);
+          console.log("project name:", project, "Participants:", participant, "User active:", userActive);
 
           let isConnected = filter(participant, (obj) => parseInt(obj.userId) === parseInt(user.participant.id));
 

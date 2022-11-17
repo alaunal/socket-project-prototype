@@ -82,7 +82,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex w-full justify-center items-center bg-gray-50">
-      <div className="w-2/5">
+      <div className="w-2/3 lg:w-2/5">
         <div className="bg-white rounded-xl shadow border border-gray-100 block px-12 py-10">
           <div className="block text-center mb-10">
             <h1 className="text-4xl text-gray-700 font-semibold">Join Project</h1>
